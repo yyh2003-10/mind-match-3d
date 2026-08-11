@@ -298,8 +298,12 @@
       hl.addColorStop(0, 'rgba(255,255,255,.35)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = hl; ctx.fillRect(0, 0, S, S);
       drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.27);
-      ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill();
-      ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.stroke();
+      // 深色描边：先铺一圈深色轮廓再叠白色图形，保证任意底色下图案都清晰可辨
+      ctx.fillStyle = 'rgba(10,14,38,.88)'; ctx.fill();
+      ctx.lineWidth = 7; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(10,14,38,.88)'; ctx.stroke();
+      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.27);
+      ctx.fillStyle = 'rgba(255,255,255,.97)'; ctx.fill();
+      ctx.lineWidth = 4; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.stroke();
       ctx.beginPath(); ctx.arc(S * 0.42, S * 0.43, S * 0.055, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.fill();
       const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4; return tex;
