@@ -203,11 +203,16 @@
 
     /* ============ 配置 ============ */
     const SIZE = 1.25, GAP = 0.22;
-    const SHAPES = ['circle','triangle','square','star','diamond','heart','hexagon','cross'];
-    // 用黄金角分配色相，保证任意数量配对都能彼此区分
+    const SHAPES = ['circle','triangle','square','star','diamond','heart','hexagon','cross','pentagon','oval','plus','ring','arrow','lightning'];
+    // 图案 = 形状 × 色相：同形状的配对按组均分色相（同形状间至少相隔 360/组数 度），
+    // 保证任意两个不同配对都有唯一的“形状+颜色”组合，避免相似图案混淆
     const faceFor = i => {
-      const h = (i * 137.508) % 360, h2 = (h + 32) % 360;
-      return { grad: [`hsl(${h.toFixed(0)},72%,55%)`, `hsl(${h2.toFixed(0)},78%,62%)`], shape: SHAPES[i % SHAPES.length] };
+      const shape = SHAPES[i % SHAPES.length];
+      const group = Math.floor(i / SHAPES.length);
+      const groups = Math.max(1, Math.ceil(PAIRS / SHAPES.length));
+      const h = ((group * 360 / groups) + (i % SHAPES.length) * 1.5) % 360, h2 = (h + 32) % 360;
+      // 底色加深提高与白色图案的反差；hue 供同色系描边使用
+      return { grad: [`hsl(${h.toFixed(0)},68%,40%)`, `hsl(${h2.toFixed(0)},74%,48%)`], shape, hue: h.toFixed(0) };
     };
 
     /* ============ 渲染器 / 场景 ============ */
@@ -284,6 +289,18 @@
         ctx.moveTo(cx, cy + r * 0.85);
         ctx.bezierCurveTo(cx + r * 1.1, cy - r * 0.4, cx + r * 0.5, cy - r * 1.1, cx, cy - r * 0.3);
         ctx.bezierCurveTo(cx - r * 0.5, cy - r * 1.1, cx - r * 1.1, cy - r * 0.4, cx, cy + r * 0.85); ctx.closePath();
+      } else if (type === 'pentagon') {
+        for (let i = 0; i < 5; i++) { const a = -Math.PI / 2 + i * 2 * Math.PI / 5; const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath();
+      } else if (type === 'oval') {
+        ctx.ellipse(cx, cy, r, r * 0.66, 0, 0, Math.PI * 2);
+      } else if (type === 'plus') {
+        const t = r * 0.38; ctx.rect(cx - t, cy - r * 0.32, t * 2, r * 0.64); ctx.rect(cx - r * 0.32, cy - t, r * 0.64, t * 2);
+      } else if (type === 'ring') {
+        ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.arc(cx, cy, r * 0.55, 0, Math.PI * 2, true);
+      } else if (type === 'arrow') {
+        ctx.moveTo(cx - r * 0.32, cy - r * 0.78); ctx.lineTo(cx + r * 0.62, cy - r * 0.78); ctx.lineTo(cx + r * 0.62, cy - r * 0.3); ctx.lineTo(cx + r * 0.92, cy - r * 0.3); ctx.lineTo(cx + r * 0.05, cy + r * 0.88); ctx.lineTo(cx - r * 0.82, cy - r * 0.3); ctx.lineTo(cx - r * 0.52, cy - r * 0.3); ctx.closePath();
+      } else if (type === 'lightning') {
+        ctx.moveTo(cx + r * 0.28, cy - r); ctx.lineTo(cx - r * 0.42, cy + r * 0.2); ctx.lineTo(cx + r * 0.02, cy + r * 0.2); ctx.lineTo(cx - r * 0.28, cy + r); ctx.lineTo(cx + r * 0.44, cy - r * 0.22); ctx.lineTo(cx + r * 0.1, cy - r * 0.22); ctx.closePath();
       }
     }
 
@@ -297,10 +314,10 @@
       const hl = ctx.createRadialGradient(S * 0.35, S * 0.27, 4, S / 2, S / 2, S);
       hl.addColorStop(0, 'rgba(255,255,255,.35)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = hl; ctx.fillRect(0, 0, S, S);
+      const edge = `hsl(${face.hue},60%,24%)`;   // 与底色同色系的深色描边
       drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.31);
-      // 深色描边：先铺一圈加粗的深色轮廓再叠纯白图形，让中间图案在任何底色下都醒目
-      ctx.fillStyle = 'rgba(8,11,30,.92)'; ctx.fill();
-      ctx.lineWidth = 9; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(8,11,30,.92)'; ctx.stroke();
+      ctx.fillStyle = edge; ctx.fill();
+      ctx.lineWidth = 9; ctx.lineJoin = 'round'; ctx.strokeStyle = edge; ctx.stroke();
       drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.31);
       ctx.fillStyle = '#ffffff'; ctx.fill();
       ctx.lineWidth = 5; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(255,255,255,.95)'; ctx.stroke();
