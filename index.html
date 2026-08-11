@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3D 记忆配对 · 思维游戏</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #0b0e22; font-family: "Segoe UI", "PingFang SC", sans-serif; }
+  #app { width: 100vw; height: 100vh; display: block; cursor: grab; }
+  #app:active { cursor: grabbing; }
+
+  /* 顶部统计栏 */
+  #hud {
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 10; pointer-events: none;
+  }
+  .pill {
+    background: rgba(20,26,58,.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+    padding: 8px 16px; min-width: 64px; text-align: center; color: #e8ecff;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  }
+  .pill .label { font-size: 11px; letter-spacing: 2px; opacity: .6; }
+  .pill .value { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  #combo.hot .value { color: #ffd166; text-shadow: 0 0 12px rgba(255,209,102,.8); }
+
+  #best {
+    position: fixed; top: 16px; right: 16px; z-index: 10; pointer-events: none;
+    background: rgba(20,26,58,.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+    padding: 8px 14px; color: #cdd6ff; font-size: 12px; text-align: right; line-height: 1.5;
+  }
+  #best b { color: #80ff72; font-size: 14px; }
+
+  #peek {
+    position: fixed; bottom: 22px; right: 22px; z-index: 10; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.15); color: #e8ecff; font-size: 15px; font-weight: 600;
+    padding: 12px 22px; border-radius: 30px; pointer-events: auto;
+    background: linear-gradient(135deg, rgba(126,232,250,.18), rgba(128,255,114,.18));
+    transition: transform .15s, opacity .2s; backdrop-filter: blur(8px);
+  }
+  #peek:hover { transform: scale(1.05); }
+  #peek:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+
+  #sound {
+    position: fixed; bottom: 22px; left: 22px; z-index: 10; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.15); color: #e8ecff; font-size: 18px;
+    width: 48px; height: 48px; border-radius: 50%; pointer-events: auto;
+    background: rgba(20,26,58,.55); backdrop-filter: blur(8px); transition: transform .15s;
+  }
+  #sound:hover { transform: scale(1.08); }
+
+  #tip {
+    position: fixed; bottom: 26px; left: 0; right: 0; text-align: center;
+    color: #9aa3d6; font-size: 13px; letter-spacing: 1px; z-index: 9; pointer-events: none;
+  }
+
+  #comboPop, #previewHint {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-weight: 800; opacity: 0; z-index: 12; pointer-events: none; text-align: center;
+  }
+  #comboPop { font-size: 56px; color: #ffd166; text-shadow: 0 0 24px rgba(255,209,102,.7); }
+  #previewHint { font-size: 40px; color: #7ee8fa; text-shadow: 0 0 24px rgba(126,232,250,.7); }
+
+  /* 胜利面板 */
+  #win {
+    position: fixed; inset: 0; display: none; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 20; color: #fff;
+    background: radial-gradient(circle at 50% 40%, rgba(30,38,86,.7), rgba(8,10,26,.92));
+    backdrop-filter: blur(6px);
+  }
+  #win.show { display: flex; animation: fade .4s ease; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  #win h1 { font-size: 40px; margin-bottom: 6px;
+    background: linear-gradient(90deg,#7ee8fa,#80ff72); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  #stars { font-size: 40px; margin: 10px 0 6px; letter-spacing: 6px; }
+  #wininfo { font-size: 16px; opacity: .85; margin-bottom: 22px; text-align: center; line-height: 1.7; }
+  .btnrow { display: flex; gap: 14px; }
+  #again, #change {
+    cursor: pointer; border: none; padding: 13px 30px; font-size: 16px; font-weight: 700;
+    border-radius: 30px; transition: transform .15s;
+  }
+  #again { color: #0b0e22; background: linear-gradient(90deg,#7ee8fa,#80ff72); }
+  #change { color: #e8ecff; background: rgba(255,255,255,.12); }
+  #again:hover, #change:hover { transform: scale(1.05); }
+
+  /* 开始菜单 */
+  #menu {
+    position: fixed; inset: 0; z-index: 30; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #fff;
+    background: radial-gradient(circle at 50% 35%, rgba(34,42,92,.85), rgba(8,10,26,.95));
+    backdrop-filter: blur(8px);
+  }
+  #menu.hide { display: none; }
+  #menu h1 { font-size: 46px; margin-bottom: 4px;
+    background: linear-gradient(90deg,#7ee8fa,#80ff72); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  #menu .sub { color: #9aa3d6; font-size: 15px; margin-bottom: 30px; letter-spacing: 1px; }
+  .grp { margin-bottom: 22px; text-align: center; }
+  .grp-title { font-size: 13px; letter-spacing: 3px; color: #9aa3d6; margin-bottom: 10px; }
+  .opts { display: flex; gap: 12px; }
+  .opt {
+    cursor: pointer; border: 1px solid rgba(255,255,255,.15); color: #e8ecff;
+    background: rgba(255,255,255,.06); padding: 12px 22px; border-radius: 16px;
+    font-size: 15px; font-weight: 600; transition: all .15s;
+  }
+  .opt:hover { background: rgba(255,255,255,.12); }
+  .opt.selected { border-color: #7ee8fa; background: rgba(126,232,250,.2); color: #fff; box-shadow: 0 0 18px rgba(126,232,250,.35); }
+  #start {
+    cursor: pointer; border: none; padding: 14px 46px; font-size: 18px; font-weight: 700;
+    border-radius: 30px; color: #0b0e22; margin-top: 10px;
+    background: linear-gradient(90deg,#7ee8fa,#80ff72); transition: transform .15s;
+  }
+  #start:hover { transform: scale(1.05); }
+</style>
+</head>
+<body>
+  <canvas id="app"></canvas>
+
+  <div id="hud">
+    <div class="pill"><div class="label">时间</div><div class="value" id="time">0:00</div></div>
+    <div class="pill"><div class="label">步数</div><div class="value" id="moves">0</div></div>
+    <div class="pill"><div class="label">分数</div><div class="value" id="score">0</div></div>
+    <div class="pill" id="combo"><div class="label">连击</div><div class="value" id="comboVal">x1</div></div>
+    <div class="pill"><div class="label">配对</div><div class="value" id="pairs">0/8</div></div>
+  </div>
+
+  <div id="best">最佳<br><b id="bestText">—</b></div>
+
+  <button id="sound">🔊</button>
+  <button id="peek">💡 提示 (3)</button>
+  <div id="tip">拖动旋转 · 滚轮缩放 · 点击方块翻开找相同图案</div>
+  <div id="comboPop"></div>
+  <div id="previewHint"></div>
+
+  <div id="win">
+    <h1>🎉 全部配对成功！</h1>
+    <div id="stars">★★★</div>
+    <p id="wininfo"></p>
+    <div class="btnrow">
+      <button id="again">再玩一次</button>
+      <button id="change">换设置</button>
+    </div>
+  </div>
+
+  <div id="menu">
+    <h1>3D 记忆配对</h1>
+    <div class="sub">一个考验观察力与记忆力的 3D 思维游戏</div>
+    <div class="grp">
+      <div class="grp-title">难度</div>
+      <div class="opts" id="diffOpts">
+        <button class="opt selected" data-diff="18">简单 · 6×6</button>
+        <button class="opt" data-diff="162">困难 · 18×18</button>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grp-title">模式</div>
+      <div class="opts" id="modeOpts">
+        <button class="opt selected" data-mode="classic">经典</button>
+        <button class="opt" data-mode="memory">记忆挑战</button>
+      </div>
+    </div>
+    <button id="start">开始游戏</button>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    /* ============ 配置 ============ */
+    const SIZE = 1.25, GAP = 0.22;
+    const SHAPES = ['circle','triangle','square','star','diamond','heart','hexagon','cross'];
+    // 用黄金角分配色相，保证任意数量配对都能彼此区分
+    const faceFor = i => {
+      const h = (i * 137.508) % 360, h2 = (h + 32) % 360;
+      return { grad: [`hsl(${h.toFixed(0)},72%,55%)`, `hsl(${h2.toFixed(0)},78%,62%)`], shape: SHAPES[i % SHAPES.length] };
+    };
+
+    /* ============ 渲染器 / 场景 ============ */
+    const canvas = document.getElementById('app');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0b0e22');
+    scene.fog = new THREE.Fog('#0b0e22', 13, 30);
+
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 8, 9.5);
+
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.minDistance = 6;
+    controls.maxDistance = 22;
+    controls.maxPolarAngle = Math.PI * 0.49;
+    controls.target.set(0, 0, 0);
+
+    /* ============ 灯光 ============ */
+    scene.add(new THREE.AmbientLight('#9aa8ff', 0.5));
+    const key = new THREE.DirectionalLight('#ffffff', 1.2);
+    key.position.set(6, 13, 6);
+    key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.camera.left = -10; key.shadow.camera.right = 10;
+    key.shadow.camera.top = 10; key.shadow.camera.bottom = -10;
+    key.shadow.bias = -0.0005;
+    scene.add(key);
+    const rim = new THREE.DirectionalLight('#7ee8fa', 0.6);
+    rim.position.set(-7, 5, -6);
+    scene.add(rim);
+
+    /* ============ 地面 ============ */
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(160, 160),
+      new THREE.MeshStandardMaterial({ color: '#161a36', roughness: 0.95, metalness: 0.1 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -0.7;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    /* ============ 程序化纹理 ============ */
+    function drawShape(ctx, type, cx, cy, r) {
+      ctx.beginPath();
+      if (type === 'circle') { ctx.arc(cx, cy, r, 0, Math.PI * 2); }
+      else if (type === 'square') { const s = r * 0.92; ctx.rect(cx - s, cy - s, s * 2, s * 2); }
+      else if (type === 'triangle') {
+        ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r * 0.92, cy + r * 0.7);
+        ctx.lineTo(cx - r * 0.92, cy + r * 0.7); ctx.closePath();
+      } else if (type === 'diamond') {
+        ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy); ctx.closePath();
+      } else if (type === 'hexagon') {
+        for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath();
+      } else if (type === 'star') {
+        for (let i = 0; i < 10; i++) { const rr = i % 2 ? r * 0.45 : r; const a = -Math.PI / 2 + i * Math.PI / 5; const x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath();
+      } else if (type === 'cross') {
+        const t = r * 0.42; ctx.moveTo(cx - t, cy - r); ctx.lineTo(cx + t, cy - r); ctx.lineTo(cx + t, cy - t); ctx.lineTo(cx + r, cy - t);
+        ctx.lineTo(cx + r, cy + t); ctx.lineTo(cx + t, cy + t); ctx.lineTo(cx + t, cy + r); ctx.lineTo(cx - t, cy + r);
+        ctx.lineTo(cx - t, cy + t); ctx.lineTo(cx - r, cy + t); ctx.lineTo(cx - r, cy - t); ctx.lineTo(cx - t, cy - t); ctx.closePath();
+      } else if (type === 'heart') {
+        ctx.moveTo(cx, cy + r * 0.85);
+        ctx.bezierCurveTo(cx + r * 1.1, cy - r * 0.4, cx + r * 0.5, cy - r * 1.1, cx, cy - r * 0.3);
+        ctx.bezierCurveTo(cx - r * 0.5, cy - r * 1.1, cx - r * 1.1, cy - r * 0.4, cx, cy + r * 0.85); ctx.closePath();
+      }
+    }
+
+    function makeFaceTexture(face) {
+      const S = 128;
+      const c = document.createElement('canvas'); c.width = c.height = S;
+      const ctx = c.getContext('2d');
+      const g = ctx.createLinearGradient(0, 0, S, S);
+      g.addColorStop(0, face.grad[0]); g.addColorStop(1, face.grad[1]);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, S, S);
+      const hl = ctx.createRadialGradient(S * 0.35, S * 0.27, 4, S / 2, S / 2, S);
+      hl.addColorStop(0, 'rgba(255,255,255,.35)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = hl; ctx.fillRect(0, 0, S, S);
+      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.27);
+      ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill();
+      ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.stroke();
+      ctx.beginPath(); ctx.arc(S * 0.42, S * 0.43, S * 0.055, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.fill();
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4; return tex;
+    }
+
+    function makeBackTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 256;
+      const ctx = c.getContext('2d');
+      const g = ctx.createLinearGradient(0, 0, 256, 256);
+      g.addColorStop(0, '#2b3160'); g.addColorStop(1, '#171c3c');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, 256, 256);
+      ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.lineWidth = 10;
+      ctx.strokeRect(18, 18, 220, 220);
+      drawShape(ctx, 'diamond', 128, 128, 46);
+      ctx.fillStyle = 'rgba(205,214,255,.5)'; ctx.fill();
+      ctx.fillStyle = 'rgba(205,214,255,.35)';
+      [[40,40],[216,40],[40,216],[216,216]].forEach(([x,y]) => { ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fill(); });
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4; return tex;
+    }
+
+    const backTex = makeBackTexture();
+    const backMat = new THREE.MeshStandardMaterial({ map: backTex, roughness: 0.6, metalness: 0.2 });
+    const geo = new THREE.BoxGeometry(SIZE, SIZE, SIZE);
+
+    /* ============ 关卡 / 棋盘 ============ */
+    let GRID = 4, TOTAL = 16, PAIRS = 8;
+    let cards = [], faceMats = [], board = null;
+    const spanBase = () => GRID - 1;
+    const START_Y = -5;
+
+    function buildBoard(pairs) {
+      PAIRS = pairs; GRID = Math.round(Math.sqrt(pairs * 2)); TOTAL = GRID * GRID;
+
+      // 清理旧棋盘
+      if (board) {
+        scene.remove(board);
+        faceMats.forEach(m => { m.map.dispose(); m.dispose(); });
+      }
+      faceMats = Array.from({ length: PAIRS }, (_, i) =>
+        new THREE.MeshStandardMaterial({
+          map: makeFaceTexture(faceFor(i)), roughness: 0.3, metalness: 0.25,
+          emissive: new THREE.Color(faceFor(i).grad[0]), emissiveIntensity: 0
+        })
+      );
+
+      board = new THREE.Group();
+      scene.add(board);
+      cards = [];
+      const span = GRID - 1;
+      for (let i = 0; i < GRID; i++) {
+        for (let j = 0; j < GRID; j++) {
+          const mesh = new THREE.Mesh(geo, [backMat, backMat, backMat, faceMats[0], backMat, backMat]);
+          mesh.castShadow = true;
+          mesh.position.set((i - span / 2) * (SIZE + GAP), START_Y, (j - span / 2) * (SIZE + GAP));
+          board.add(mesh);
+          cards.push({
+            mesh, faceIndex: 0, faceMat: faceMats[0],
+            matched: false, faceUp: false, hover: false,
+            rotFrom: 0, rotTo: 0, rotT: 1, rotDur: 0.55,
+            popT: 1, popDur: 0.45, enterT: 0, enterDur: 0.65, entered: false,
+            gx: i, gz: j,
+          });
+          mesh.userData.card = cards[cards.length - 1];
+        }
+      }
+    }
+
+    /* ============ 玩法状态 ============ */
+    let firstCard = null, lock = false, matchedCount = 0, previewing = false;
+    let moves = 0, score = 0, combo = 1, peekLeft = 3, peeking = false;
+    let timerStarted = false, startTime = 0, timerId = null, maxCombo = 1;
+    let currentPairs = 8, currentMode = 'classic';
+    let previewTimer = null;
+
+    const $ = id => document.getElementById(id);
+    const fmt = ms => { const s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+    function updateHud() {
+      $('moves').textContent = moves;
+      $('score').textContent = score;
+      $('comboVal').textContent = 'x' + combo;
+      $('combo').classList.toggle('hot', combo >= 2);
+      $('pairs').textContent = (matchedCount / 2) + '/' + PAIRS;
+      const pk = $('peek');
+      if (currentMode === 'memory') { pk.textContent = '记忆模式无提示'; pk.disabled = true; }
+      else { pk.textContent = '💡 提示 (' + peekLeft + ')'; pk.disabled = peekLeft <= 0 || peeking; }
+    }
+
+    let best = null;
+    try { best = JSON.parse(localStorage.getItem('memory3d_best') || 'null'); } catch (e) {}
+    function renderBest() { $('bestText').textContent = best ? (best.score + ' 分·' + fmt(best.time)) : '—'; }
+    renderBest();
+
+    function resetState() {
+      moves = 0; score = 0; combo = 1; maxCombo = 1; peekLeft = 3; peeking = false;
+      matchedCount = 0; firstCard = null; lock = false; previewing = false;
+      timerStarted = false; startTime = 0; stopTimer();
+      $('time').textContent = '0:00';
+      $('win').classList.remove('show');
+      updateHud();
+    }
+
+    function dealCards() {
+      const pool = [];
+      for (let k = 0; k < PAIRS; k++) pool.push(k, k);
+      for (let k = pool.length - 1; k > 0; k--) { const r = Math.floor(Math.random() * (k + 1)); [pool[k], pool[r]] = [pool[r], pool[k]]; }
+      const span = GRID - 1;
+      cards.forEach((card, idx) => {
+        const fi = pool[idx];
+        card.faceIndex = fi; card.faceMat = faceMats[fi];
+        card.mesh.material[3] = faceMats[fi];
+        card.faceMat.emissiveIntensity = 0;
+        card.matched = false; card.faceUp = false; card.hover = false;
+        card.rotFrom = 0; card.rotTo = 0; card.rotT = 1; card.mesh.rotation.x = 0;
+        card.popT = 1; card.mesh.scale.setScalar(1);
+        card.enterT = 0; card.entered = false;
+        card.mesh.position.y = START_Y;
+        card.mesh.position.x = ((idx % GRID) - span / 2) * (SIZE + GAP);
+        card.mesh.position.z = (Math.floor(idx / GRID) - span / 2) * (SIZE + GAP);
+      });
+    }
+
+    function flip(card, up) { card.rotFrom = card.rotTo; card.rotTo = up ? Math.PI : 0; card.rotT = 0; }
+
+    function startTimer() {
+      if (timerStarted) return;
+      timerStarted = true; startTime = Date.now();
+      timerId = setInterval(() => { $('time').textContent = fmt(Date.now() - startTime); }, 200);
+    }
+    function stopTimer() { if (timerId) clearInterval(timerId); timerId = null; }
+
+    function showCombo(n) {
+      if (n < 2) return;
+      const el = $('comboPop');
+      el.textContent = '连击 x' + n + '!';
+      el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translate(-50%,-50%) scale(.6)';
+      requestAnimationFrame(() => {
+        el.style.transition = 'all .7s cubic-bezier(.2,.8,.2,1)';
+        el.style.opacity = '0'; el.style.transform = 'translate(-50%,-90%) scale(1.2)';
+      });
+    }
+
+    // 根据棋盘尺寸和屏幕宽高比，自动把整盘框进视野（窄屏自动拉远）
+    function fitView() {
+      const half = GRID * (SIZE + GAP) / 2;
+      const R = half * Math.SQRT2 * 1.15;            // 包络半径 + 余量
+      const vFov = camera.fov * Math.PI / 180;
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+      const minFov = Math.min(vFov, hFov);           // 窄屏由水平视角决定
+      const dist = R / Math.sin(minFov / 2);
+      const dir = new THREE.Vector3(0, 0.9, 1).normalize();
+      camera.position.copy(dir.multiplyScalar(dist));
+      controls.target.set(0, 0, 0);
+      controls.minDistance = GRID * 0.5;
+      controls.maxDistance = dist * 2.5;
+      controls.update();
+    }
+
+    function startLevel(pairs, mode) {
+      currentPairs = pairs; currentMode = mode;
+      buildBoard(pairs);
+      dealCards();
+      // 阴影 / 雾 随棋盘大小自适应；镜头自动框住整盘（含窄屏）
+      const half = GRID * (SIZE + GAP) / 2 + 1;
+      key.shadow.camera.left = -half; key.shadow.camera.right = half;
+      key.shadow.camera.top = half; key.shadow.camera.bottom = -half;
+      key.shadow.camera.updateProjectionMatrix();
+      const dist = GRID * 1.7;
+      scene.fog.near = dist * 0.9; scene.fog.far = dist * 3;
+      fitView();
+      resetState();
+      if (mode === 'memory') startPreview(); else startTimer();
+    }
+
+    function startPreview() {
+      previewing = true; lock = true;
+      cards.forEach(c => { c.faceUp = true; flip(c, true); });
+      const dur = PAIRS > 100 ? 9000 : PAIRS > 10 ? 5000 : 2600;
+      const hint = $('previewHint');
+      hint.textContent = '记住它们的位置！';
+      hint.style.transition = 'none'; hint.style.opacity = '1';
+      requestAnimationFrame(() => { hint.style.transition = 'opacity .4s'; });
+      previewTimer = setTimeout(() => {
+        cards.forEach(c => { if (!c.matched) { c.faceUp = false; flip(c, false); } });
+        previewing = false; lock = false; startTimer();
+        hint.style.opacity = '0';
+      }, dur);
+    }
+
+    function onPick(card) {
+      if (lock || peeking || previewing || card.matched || card.faceUp || card === firstCard) return;
+      if (currentMode === 'classic') startTimer();
+      card.faceUp = true; flip(card, true); playFlip();
+
+      if (!firstCard) { firstCard = card; return; }
+
+      moves++; updateHud(); lock = true;
+      if (firstCard.faceIndex === card.faceIndex) {
+        setTimeout(() => {
+          firstCard.matched = true; card.matched = true;
+          firstCard.faceMat.emissiveIntensity = 0.55; card.faceMat.emissiveIntensity = 0.55;
+          firstCard.popT = 0; card.popT = 0;
+          matchedCount += 2;
+          combo = Math.min(combo + 1, 99); maxCombo = Math.max(maxCombo, combo);
+          score += 100 * combo;
+          showCombo(combo);
+          playMatch(combo);
+          launchBurst(card.mesh.position, faceFor(card.faceIndex).grad[0]);
+          firstCard = null; lock = false; updateHud();
+          if (matchedCount === TOTAL) win();
+        }, 460);
+      } else {
+        setTimeout(() => {
+          flip(firstCard, false); flip(card, false);
+          firstCard.faceUp = false; card.faceUp = false;
+          firstCard = null; lock = false; combo = 1; updateHud();
+          playMismatch();
+        }, 820);
+      }
+    }
+
+    function peek() {
+      if (peeking || peekLeft <= 0 || lock || previewing || currentMode === 'memory') return;
+      if (firstCard) { flip(firstCard, false); firstCard.faceUp = false; firstCard = null; }
+      peeking = true; lock = true; peekLeft--; updateHud();
+      cards.filter(c => !c.matched).forEach(c => { if (!c.faceUp) { c.faceUp = true; flip(c, true); } });
+      setTimeout(() => {
+        cards.forEach(c => { if (!c.matched) { c.faceUp = false; flip(c, false); } });
+        peeking = false; lock = false;
+      }, 1300);
+    }
+
+    function starsFor(m) { return m <= PAIRS + 2 ? 3 : m <= PAIRS + 8 ? 2 : 1; }
+
+    function win() {
+      stopTimer();
+      playWin();
+      const used = Date.now() - startTime;
+      const st = starsFor(moves);
+      if (!best || score > best.score || (score === best.score && used < best.time)) {
+        best = { score, time: used };
+        try { localStorage.setItem('memory3d_best', JSON.stringify(best)); } catch (e) {}
+        renderBest();
+      }
+      $('stars').textContent = '★★★☆☆☆'.slice(3 - st, 6 - st);
+      $('wininfo').innerHTML = `用时 ${fmt(used)} · 共 ${moves} 步 · 最高连击 x${maxCombo}<br>得分 <b style="color:#80ff72">${score}</b>`;
+      $('win').classList.add('show');
+    }
+
+    /* ============ 音频（程序化合成，无需外部资源） ============ */
+    let audioCtx = null, masterGain = null, bgmGain = null, sfxGain = null, muted = false;
+    let bgmRunning = false, chordIdx = 0, bgmTimer = null, arpTimer = null;
+    const CHORDS = [
+      [261.63, 329.63, 392.00], // Cmaj
+      [220.00, 261.63, 329.63], // Am
+      [174.61, 220.00, 261.63], // Fmaj
+      [196.00, 246.94, 293.66], // G
+    ];
+
+    function initAudio() {
+      if (audioCtx) { if (audioCtx.resume) audioCtx.resume(); return; }
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain(); masterGain.gain.value = 0.9; masterGain.connect(audioCtx.destination);
+      bgmGain = audioCtx.createGain(); bgmGain.gain.value = 0.22; bgmGain.connect(masterGain);
+      sfxGain = audioCtx.createGain(); sfxGain.gain.value = 0.6; sfxGain.connect(masterGain);
+    }
+
+    function playTone(freq, dur, type = 'sine', vol = 0.5, when = 0, target = null) {
+      if (!audioCtx || muted) return;
+      const t = audioCtx.currentTime + when;
+      const osc = audioCtx.createOscillator(); const g = audioCtx.createGain();
+      osc.type = type; osc.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(vol, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      osc.connect(g); g.connect(target || sfxGain);
+      osc.start(t); osc.stop(t + dur + 0.05);
+    }
+
+    function playFlip() {
+      if (!audioCtx || muted) return;
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator(); const g = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(520, t);
+      osc.frequency.exponentialRampToValueAtTime(280, t + 0.12);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(0.4, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
+      osc.connect(g); g.connect(sfxGain);
+      osc.start(t); osc.stop(t + 0.16);
+    }
+
+    function playMatch(combo = 1) {
+      if (!audioCtx || muted) return;
+      const base = 523.25; // C5
+      const mult = Math.pow(2, Math.min(combo - 1, 10) / 12); // 连击升调
+      [base * mult, base * mult * 1.26, base * mult * 1.5].forEach((f, i) => playTone(f, 0.5, 'sine', 0.35, i * 0.06));
+    }
+
+    function playMismatch() {
+      if (!audioCtx || muted) return;
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator(); const g = audioCtx.createGain();
+      const lp = audioCtx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 800;
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, t);
+      osc.frequency.exponentialRampToValueAtTime(130, t + 0.25);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(0.22, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      osc.connect(lp); lp.connect(g); g.connect(sfxGain);
+      osc.start(t); osc.stop(t + 0.32);
+    }
+
+    function playWin() {
+      if (!audioCtx || muted) return;
+      [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5].forEach((f, i) => playTone(f, 0.6, 'sine', 0.35, i * 0.12));
+    }
+
+    function scheduleBGM() {
+      if (!bgmRunning) return;
+      const dur = 4;
+      CHORDS[chordIdx % CHORDS.length].forEach(f => {
+        const t = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator(); const g = audioCtx.createGain();
+        const lp = audioCtx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1100;
+        osc.type = 'sine'; osc.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(0.1, t + 1.2);
+        g.gain.linearRampToValueAtTime(0.07, t + dur - 1.2);
+        g.gain.linearRampToValueAtTime(0.0001, t + dur);
+        osc.connect(lp); lp.connect(g); g.connect(bgmGain);
+        osc.start(t); osc.stop(t + dur + 0.1);
+      });
+      chordIdx++;
+      bgmTimer = setTimeout(scheduleBGM, dur * 1000);
+    }
+
+    function scheduleArp() {
+      if (!bgmRunning) return;
+      const ch = CHORDS[chordIdx % CHORDS.length];
+      playTone(ch[Math.floor(Math.random() * ch.length)] * 2, 1.0, 'triangle', 0.05, 0, bgmGain); // 高八度点缀
+      arpTimer = setTimeout(scheduleArp, 700 + Math.random() * 900);
+    }
+
+    function startBGM() { if (!audioCtx || bgmRunning) return; bgmRunning = true; chordIdx = 0; scheduleBGM(); scheduleArp(); }
+    function stopBGM() { bgmRunning = false; if (bgmTimer) clearTimeout(bgmTimer); if (arpTimer) clearTimeout(arpTimer); }
+
+    /* ============ 粒子庆祝 ============ */
+    const bursts = [];
+    const pGeo = new THREE.SphereGeometry(0.08, 8, 8);
+    function launchBurst(pos, color) {
+      const group = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.7, roughness: 0.3, transparent: true });
+      const parts = [];
+      for (let i = 0; i < 20; i++) {
+        const m = new THREE.Mesh(pGeo, mat);
+        m.position.copy(pos); m.position.y += 0.2;
+        const dir = new THREE.Vector3(Math.random() - .5, Math.random() * 0.9 + 0.3, Math.random() - .5).normalize().multiplyScalar(2.5 + Math.random() * 2.5);
+        parts.push({ m, vel: dir }); group.add(m);
+      }
+      scene.add(group);
+      bursts.push({ group, parts, mat, life: 0, max: 1.1 });
+    }
+
+    /* ============ 点击拾取 ============ */
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2(-2, -2);
+    let downPos = null;
+    canvas.addEventListener('pointermove', e => {
+      pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+    canvas.addEventListener('pointerdown', e => { downPos = { x: e.clientX, y: e.clientY }; });
+    canvas.addEventListener('pointerup', e => {
+      if (!downPos) return;
+      if (Math.hypot(e.clientX - downPos.x, e.clientY - downPos.y) > 6) return;
+      if (!board) return;
+      raycaster.setFromCamera(pointer, camera);
+      const hit = raycaster.intersectObjects(board.children, false)[0];
+      if (hit) onPick(hit.object.userData.card);
+    });
+    $('peek').addEventListener('click', peek);
+    $('again').addEventListener('click', () => startLevel(currentPairs, currentMode));
+    $('change').addEventListener('click', () => { stopBGM(); $('win').classList.remove('show'); $('menu').classList.remove('hide'); });
+    $('sound').addEventListener('click', () => {
+      if (!audioCtx) initAudio();
+      muted = !muted;
+      if (masterGain) masterGain.gain.value = muted ? 0 : 0.9;
+      $('sound').textContent = muted ? '🔇' : '🔊';
+    });
+
+    /* ============ 菜单交互 ============ */
+    let selDiff = 8, selMode = 'classic';
+    function bindOpts(containerId, attr, setter) {
+      $(containerId).querySelectorAll('.opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          $(containerId).querySelectorAll('.opt').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          setter(parseInt(btn.dataset[attr], 10) || btn.dataset[attr]);
+        });
+      });
+    }
+    bindOpts('diffOpts', 'diff', v => selDiff = v);
+    bindOpts('modeOpts', 'mode', v => selMode = v);
+    $('start').addEventListener('click', () => {
+      $('menu').classList.add('hide');
+      initAudio(); startBGM();
+      startLevel(selDiff, selMode);
+    });
+
+    /* ============ 缓动 ============ */
+    const easeOutBack = t => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+
+    /* ============ 主循环 ============ */
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.05);
+
+      let hovered = null;
+      if (board) {
+        raycaster.setFromCamera(pointer, camera);
+        const hov = raycaster.intersectObjects(board.children, false)[0];
+        hovered = hov ? hov.object.userData.card : null;
+      }
+
+      if (board) cards.forEach(card => {
+        if (!card.entered) {
+          card.enterT += dt / card.enterDur;
+          const e = easeOutBack(Math.min(1, card.enterT));
+          card.mesh.position.y = START_Y + (0 - START_Y) * e;
+          if (card.enterT >= 1) { card.mesh.position.y = 0; card.entered = true; }
+        }
+        if (card.rotT < 1) {
+          card.rotT += dt / card.rotDur;
+          const e = easeOutBack(Math.min(1, card.rotT));
+          card.mesh.rotation.x = card.rotFrom + (card.rotTo - card.rotFrom) * e;
+        }
+        if (card.popT < 1) {
+          card.popT += dt / card.popDur;
+          const p = Math.min(1, card.popT);
+          card.mesh.scale.setScalar(1 + 0.28 * Math.sin(p * Math.PI));
+        } else card.mesh.scale.setScalar(1);
+        if (card.entered) {
+          card.hover = (hovered === card && !card.matched);
+          let yT = 0;
+          if (card.hover) yT += 0.16;
+          if (card.faceUp || card.matched) yT += 0.18;
+          card.mesh.position.y += (yT - card.mesh.position.y) * 0.2;
+        }
+      });
+
+      for (let b = bursts.length - 1; b >= 0; b--) {
+        const bu = bursts[b]; bu.life += dt;
+        const k = 1 - bu.life / bu.max;
+        bu.parts.forEach(p => { p.vel.y -= 7 * dt; p.m.position.addScaledVector(p.vel, dt); });
+        bu.mat.opacity = Math.max(0, k);
+        bu.group.scale.setScalar(Math.max(0.01, k));
+        if (bu.life >= bu.max) { scene.remove(bu.group); bursts.splice(b, 1); }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      if (board) fitView();
+    });
+
+    animate();
+  </script>
+</body>
+</html>
