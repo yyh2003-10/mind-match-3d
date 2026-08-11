@@ -297,15 +297,16 @@
       const hl = ctx.createRadialGradient(S * 0.35, S * 0.27, 4, S / 2, S / 2, S);
       hl.addColorStop(0, 'rgba(255,255,255,.35)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = hl; ctx.fillRect(0, 0, S, S);
-      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.27);
-      // 深色描边：先铺一圈深色轮廓再叠白色图形，保证任意底色下图案都清晰可辨
-      ctx.fillStyle = 'rgba(10,14,38,.88)'; ctx.fill();
-      ctx.lineWidth = 7; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(10,14,38,.88)'; ctx.stroke();
-      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.27);
-      ctx.fillStyle = 'rgba(255,255,255,.97)'; ctx.fill();
-      ctx.lineWidth = 4; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.stroke();
-      ctx.beginPath(); ctx.arc(S * 0.42, S * 0.43, S * 0.055, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.fill();
+      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.31);
+      // 深色描边：先铺一圈加粗的深色轮廓再叠纯白图形，让中间图案在任何底色下都醒目
+      ctx.fillStyle = 'rgba(8,11,30,.92)'; ctx.fill();
+      ctx.lineWidth = 9; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(8,11,30,.92)'; ctx.stroke();
+      drawShape(ctx, face.shape, S / 2, S * 0.54, S * 0.31);
+      ctx.fillStyle = '#ffffff'; ctx.fill();
+      ctx.lineWidth = 5; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(255,255,255,.95)'; ctx.stroke();
+      // 光泽高光点移到背景角落，避免被白色图案盖住
+      ctx.beginPath(); ctx.arc(S * 0.16, S * 0.18, S * 0.05, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,.4)'; ctx.fill();
       const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4; return tex;
     }
 
