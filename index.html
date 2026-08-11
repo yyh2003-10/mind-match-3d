@@ -174,7 +174,7 @@
       <div class="grp-title">难度</div>
       <div class="opts" id="diffOpts">
         <button class="opt selected" data-diff="18">简单 · 6×6</button>
-        <button class="opt" data-diff="162">困难 · 18×18</button>
+        <button class="opt" data-diff="50">困难 · 10×10</button>
       </div>
     </div>
     <div class="grp">
@@ -203,10 +203,10 @@
 
     /* ============ 配置 ============ */
     const SIZE = 1.25, GAP = 0.22;
-    const SHAPES = ['circle','triangle','square','star','diamond','heart','hexagon','cross','pentagon','oval','plus','ring','arrow','lightning','crescent','semicircle','trapezoid','chevron','clover','boat','tridown','triright','arrowleft','xmark'];
-    // 图案 = 形状 × 色相：24 种形状循环，同形状配对按组均匀错开色相（相隔 360/组数 度），
+    const SHAPES = ['circle','triangle','square','star','diamond','heart','hexagon','cross','pentagon','oval','plus','ring','arrow','lightning','crescent','semicircle','trapezoid','chevron','clover','boat','tridown','triright','arrowleft','xmark','hourglass','leaf','club','shield','flower','crown'];
+    // 图案 = 形状 × 色相：30 种形状循环，同形状配对按组均匀错开色相（相隔 360/组数 度），
     // 任意两个不同配对都有唯一的“形状+颜色”组合；组内色相也平铺开，
-    // 简单难度（18 对）每张牌的形状、颜色都不重复
+    // 简单 6×6（18 对）每张牌形状颜色都不重复，困难 10×10（50 对）每种形状最多出现 2 次
     const faceFor = i => {
       const shape = SHAPES[i % SHAPES.length];
       const group = Math.floor(i / SHAPES.length);
@@ -324,6 +324,18 @@
       } else if (type === 'xmark') {
         ctx.moveTo(cx - r * 0.68, cy - r * 0.28); ctx.lineTo(cx - r * 0.28, cy - r * 0.68); ctx.lineTo(cx + r * 0.68, cy + r * 0.28); ctx.lineTo(cx + r * 0.28, cy + r * 0.68); ctx.closePath();
         ctx.moveTo(cx + r * 0.68, cy - r * 0.28); ctx.lineTo(cx + r * 0.28, cy - r * 0.68); ctx.lineTo(cx - r * 0.68, cy + r * 0.28); ctx.lineTo(cx - r * 0.28, cy + r * 0.68); ctx.closePath();
+      } else if (type === 'hourglass') {
+        ctx.moveTo(cx - r * 0.65, cy - r * 0.75); ctx.lineTo(cx + r * 0.65, cy - r * 0.75); ctx.lineTo(cx, cy); ctx.lineTo(cx + r * 0.65, cy + r * 0.75); ctx.lineTo(cx - r * 0.65, cy + r * 0.75); ctx.lineTo(cx, cy); ctx.closePath();
+      } else if (type === 'leaf') {
+        ctx.moveTo(cx, cy - r * 0.9); ctx.bezierCurveTo(cx + r * 0.9, cy - r * 0.45, cx + r * 0.9, cy + r * 0.45, cx, cy + r * 0.9); ctx.bezierCurveTo(cx - r * 0.9, cy + r * 0.45, cx - r * 0.9, cy - r * 0.45, cx, cy - r * 0.9); ctx.closePath();
+      } else if (type === 'club') {
+        ctx.arc(cx, cy - r * 0.45, r * 0.5, 0, Math.PI * 2); ctx.arc(cx - r * 0.45, cy + r * 0.12, r * 0.5, 0, Math.PI * 2); ctx.arc(cx + r * 0.45, cy + r * 0.12, r * 0.5, 0, Math.PI * 2); ctx.rect(cx - r * 0.12, cy + r * 0.3, r * 0.24, r * 0.55);
+      } else if (type === 'shield') {
+        ctx.moveTo(cx - r * 0.75, cy - r * 0.6); ctx.lineTo(cx - r * 0.75, cy + r * 0.1); ctx.quadraticCurveTo(cx - r * 0.4, cy + r * 0.7, cx, cy + r * 0.9); ctx.quadraticCurveTo(cx + r * 0.4, cy + r * 0.7, cx + r * 0.75, cy + r * 0.1); ctx.lineTo(cx + r * 0.75, cy - r * 0.6); ctx.quadraticCurveTo(cx, cy - r * 1.0, cx - r * 0.75, cy - r * 0.6); ctx.closePath();
+      } else if (type === 'flower') {
+        for (let i = 0; i < 5; i++) { const a = i * 2 * Math.PI / 5; ctx.arc(cx + Math.cos(a) * r * 0.5, cy + Math.sin(a) * r * 0.5, r * 0.58, 0, Math.PI * 2); }
+      } else if (type === 'crown') {
+        ctx.moveTo(cx - r * 0.8, cy + r * 0.55); ctx.lineTo(cx - r * 0.8, cy - r * 0.15); ctx.lineTo(cx - r * 0.5, cy + r * 0.05); ctx.lineTo(cx - r * 0.3, cy - r * 0.35); ctx.lineTo(cx, cy - r * 0.05); ctx.lineTo(cx + r * 0.3, cy - r * 0.35); ctx.lineTo(cx + r * 0.5, cy + r * 0.05); ctx.lineTo(cx + r * 0.8, cy - r * 0.15); ctx.lineTo(cx + r * 0.8, cy + r * 0.55); ctx.closePath();
       }
     }
 
