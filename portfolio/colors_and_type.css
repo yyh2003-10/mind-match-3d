@@ -1,0 +1,88 @@
+/* ============================================================
+   Industrial Precision Design System — Copper on Cream / Midnight
+   Subtraction redesign: restrained, confident, engineering-grade
+   ============================================================ */
+
+:root {
+  /* Typography */
+  --brand-font-sans: 'Inter', 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  --brand-font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --brand-font-display: 'Plus Jakarta Sans', 'Inter', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+
+  /* === Light mode — copper on warm cream === */
+  --brand-background: #f8f7f4;
+  --brand-foreground: #1a1a2e;
+  --brand-card: #ffffff;
+  --brand-card-foreground: #1a1a2e;
+  --brand-popover: #ffffff;
+  --brand-popover-foreground: #1a1a2e;
+  --brand-primary: #c97d3d;
+  --brand-primary-foreground: #ffffff;
+  --brand-muted: #f0ede8;
+  --brand-muted-foreground: #5a5a6a;
+  --brand-border: #e0ddd6;
+  --brand-input: #e0ddd6;
+  --brand-ring: #c97d3d;
+
+  /* Radius scale */
+  --brand-radius-sm: 6px;
+  --brand-radius-md: 12px;
+  --brand-radius-lg: 20px;
+
+  /* Extended palette (page-local, not semantic tokens) */
+  --brand-accent-hover: #b06a2e;
+  --brand-accent-soft: rgba(201, 125, 61, 0.08);
+  --brand-accent-glow: rgba(201, 125, 61, 0.18);
+  --brand-fg-subtle: #8a8a9a;
+  --brand-bg-subtle: #f0ede8;
+  --brand-bg-inverted: #0b1120;
+  --brand-border-strong: #1a1a2e;
+  --brand-steel-blue: #2563eb;
+  --brand-steel-blue-soft: rgba(37, 99, 235, 0.06);
+  --brand-success: #10b981;
+  --brand-danger: #ef4444;
+  --brand-gradient-accent: linear-gradient(135deg, #c97d3d, #e8a05a);
+  --brand-gradient-dark: linear-gradient(135deg, #0b1120, #1a2a4a);
+
+  /* Shadows — subtle, precision-grade */
+  --brand-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --brand-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --brand-shadow-lg: 0 10px 36px rgba(0, 0, 0, 0.08);
+  --brand-shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.10);
+
+  /* Transitions */
+  --brand-t-fast: 0.15s;
+  --brand-t-base: 0.3s;
+  --brand-t-slow: 0.5s;
+  --brand-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --brand-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* === Dark mode — copper on midnight === */
+[data-theme="dark"] {
+  --brand-background: #0b1120;
+  --brand-foreground: #e8e6e1;
+  --brand-card: #161f2e;
+  --brand-card-foreground: #e8e6e1;
+  --brand-popover: #161f2e;
+  --brand-popover-foreground: #e8e6e1;
+  --brand-primary: #c97d3d;
+  --brand-primary-foreground: #ffffff;
+  --brand-muted: #111827;
+  --brand-muted-foreground: #9a9aaa;
+  --brand-border: #263040;
+  --brand-input: #263040;
+  --brand-ring: #c97d3d;
+
+  --brand-accent-soft: rgba(201, 125, 61, 0.12);
+  --brand-accent-glow: rgba(201, 125, 61, 0.15);
+  --brand-fg-subtle: #6a6a7a;
+  --brand-bg-subtle: #111827;
+  --brand-bg-inverted: #f8f7f4;
+  --brand-border-strong: #e8e6e1;
+  --brand-steel-blue-soft: rgba(37, 99, 235, 0.10);
+  --brand-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --brand-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --brand-shadow-lg: 0 10px 36px rgba(0, 0, 0, 0.45);
+  --brand-shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.55);
+}

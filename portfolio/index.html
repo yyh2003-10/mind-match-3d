@@ -1,0 +1,1741 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>尹一慧 | 机械设计工程师</title>
+    <meta name="description" content="尹一慧 - 材料成型及控制工程 学士。机械设计、动平衡机、叶片检测系统。以精密制造与技术创新驱动工程实践。">
+    <meta name="theme-color" content="#c97d3d">
+    <meta name="author" content="尹一慧">
+    <meta name="keywords" content="尹一慧,机械设计,动平衡机,材料成型,SolidWorks,ANSYS,叶片检测,个人主页,求职">
+    <meta property="og:title" content="尹一慧 | 机械设计工程师">
+    <meta property="og:description" content="材料成型及控制工程 · 机械设计 · 动平衡机 · 叶片检测系统 — 以精密制造与技术创新驱动工程实践">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:image" content="assets/profile.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="尹一慧 | 机械设计工程师">
+    <meta name="twitter:description" content="材料成型及控制工程 · 机械设计 · 动平衡机 · 叶片检测系统">
+    <meta name="twitter:image" content="assets/profile.webp">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yyh2003-10.github.io/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "尹一慧",
+      "jobTitle": "机械设计工程师",
+      "url": "https://yyh2003-10.github.io/",
+      "image": "assets/profile.webp",
+      "email": "mailto:y3167952062@outlook.com",
+      "telephone": "+86-15372843059",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "江门市",
+        "addressRegion": "广东省",
+        "addressCountry": "CN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "湖南工程学院"
+      },
+      "knowsAbout": ["机械结构设计", "动平衡技术", "材料成型", "SolidWorks", "ANSYS", "C# WinForm"],
+      "sameAs": ["https://github.com/yyh2003-10"]
+    }
+    </script>
+    <style id="theme-vars">
+/* ============================================================
+   Industrial Precision Design System — Copper on Cream / Midnight
+   Subtraction redesign: restrained, confident, engineering-grade
+   ============================================================ */
+
+:root {
+  /* Typography */
+  --brand-font-sans: 'Inter', 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  --brand-font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --brand-font-display: 'Plus Jakarta Sans', 'Inter', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+
+  /* === Light mode — copper on warm cream === */
+  --brand-background: #f8f7f4;
+  --brand-foreground: #1a1a2e;
+  --brand-card: #ffffff;
+  --brand-card-foreground: #1a1a2e;
+  --brand-popover: #ffffff;
+  --brand-popover-foreground: #1a1a2e;
+  --brand-primary: #c97d3d;
+  --brand-primary-foreground: #ffffff;
+  --brand-muted: #f0ede8;
+  --brand-muted-foreground: #5a5a6a;
+  --brand-border: #e0ddd6;
+  --brand-input: #e0ddd6;
+  --brand-ring: #c97d3d;
+
+  /* Radius scale */
+  --brand-radius-sm: 6px;
+  --brand-radius-md: 12px;
+  --brand-radius-lg: 20px;
+
+  /* Extended palette (page-local, not semantic tokens) */
+  --brand-accent-hover: #b06a2e;
+  --brand-accent-soft: rgba(201, 125, 61, 0.08);
+  --brand-accent-glow: rgba(201, 125, 61, 0.18);
+  --brand-fg-subtle: #8a8a9a;
+  --brand-bg-subtle: #f0ede8;
+  --brand-bg-inverted: #0b1120;
+  --brand-border-strong: #1a1a2e;
+  --brand-steel-blue: #2563eb;
+  --brand-steel-blue-soft: rgba(37, 99, 235, 0.06);
+  --brand-success: #10b981;
+  --brand-danger: #ef4444;
+  --brand-gradient-accent: linear-gradient(135deg, #c97d3d, #e8a05a);
+  --brand-gradient-dark: linear-gradient(135deg, #0b1120, #1a2a4a);
+
+  /* Shadows — subtle, precision-grade */
+  --brand-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --brand-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --brand-shadow-lg: 0 10px 36px rgba(0, 0, 0, 0.08);
+  --brand-shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.10);
+
+  /* Transitions */
+  --brand-t-fast: 0.15s;
+  --brand-t-base: 0.3s;
+  --brand-t-slow: 0.5s;
+  --brand-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --brand-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* === Dark mode — copper on midnight === */
+[data-theme="dark"] {
+  --brand-background: #0b1120;
+  --brand-foreground: #e8e6e1;
+  --brand-card: #161f2e;
+  --brand-card-foreground: #e8e6e1;
+  --brand-popover: #161f2e;
+  --brand-popover-foreground: #e8e6e1;
+  --brand-primary: #c97d3d;
+  --brand-primary-foreground: #ffffff;
+  --brand-muted: #111827;
+  --brand-muted-foreground: #9a9aaa;
+  --brand-border: #263040;
+  --brand-input: #263040;
+  --brand-ring: #c97d3d;
+
+  --brand-accent-soft: rgba(201, 125, 61, 0.12);
+  --brand-accent-glow: rgba(201, 125, 61, 0.15);
+  --brand-fg-subtle: #6a6a7a;
+  --brand-bg-subtle: #111827;
+  --brand-bg-inverted: #f8f7f4;
+  --brand-border-strong: #e8e6e1;
+  --brand-steel-blue-soft: rgba(37, 99, 235, 0.10);
+  --brand-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --brand-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --brand-shadow-lg: 0 10px 36px rgba(0, 0, 0, 0.45);
+  --brand-shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.55);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--brand-background);
+    --color-foreground: var(--brand-foreground);
+    --color-card: var(--brand-card);
+    --color-card-foreground: var(--brand-card-foreground);
+    --color-popover: var(--brand-popover);
+    --color-popover-foreground: var(--brand-popover-foreground);
+    --color-primary: var(--brand-primary);
+    --color-primary-foreground: var(--brand-primary-foreground);
+    --color-muted: var(--brand-muted);
+    --color-muted-foreground: var(--brand-muted-foreground);
+    --color-border: var(--brand-border);
+    --color-input: var(--brand-input);
+    --color-ring: var(--brand-ring);
+    --radius-sm: var(--brand-radius-sm);
+    --radius-md: var(--brand-radius-md);
+    --radius-lg: var(--brand-radius-lg);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--brand-background); }
+      .text-background { color: var(--brand-background); }
+      .border-background { border-color: var(--brand-background); }
+      .ring-background { --tw-ring-color: var(--brand-background); }
+      .bg-foreground { background-color: var(--brand-foreground); }
+      .text-foreground { color: var(--brand-foreground); }
+      .border-foreground { border-color: var(--brand-foreground); }
+      .ring-foreground { --tw-ring-color: var(--brand-foreground); }
+      .bg-card { background-color: var(--brand-card); }
+      .text-card { color: var(--brand-card); }
+      .border-card { border-color: var(--brand-card); }
+      .ring-card { --tw-ring-color: var(--brand-card); }
+      .bg-card-foreground { background-color: var(--brand-card-foreground); }
+      .text-card-foreground { color: var(--brand-card-foreground); }
+      .border-card-foreground { border-color: var(--brand-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--brand-card-foreground); }
+      .bg-popover { background-color: var(--brand-popover); }
+      .text-popover { color: var(--brand-popover); }
+      .border-popover { border-color: var(--brand-popover); }
+      .ring-popover { --tw-ring-color: var(--brand-popover); }
+      .bg-popover-foreground { background-color: var(--brand-popover-foreground); }
+      .text-popover-foreground { color: var(--brand-popover-foreground); }
+      .border-popover-foreground { border-color: var(--brand-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--brand-popover-foreground); }
+      .bg-primary { background-color: var(--brand-primary); }
+      .text-primary { color: var(--brand-primary); }
+      .border-primary { border-color: var(--brand-primary); }
+      .ring-primary { --tw-ring-color: var(--brand-primary); }
+      .bg-primary-foreground { background-color: var(--brand-primary-foreground); }
+      .text-primary-foreground { color: var(--brand-primary-foreground); }
+      .border-primary-foreground { border-color: var(--brand-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--brand-primary-foreground); }
+      .bg-muted { background-color: var(--brand-muted); }
+      .text-muted { color: var(--brand-muted); }
+      .border-muted { border-color: var(--brand-muted); }
+      .ring-muted { --tw-ring-color: var(--brand-muted); }
+      .bg-muted-foreground { background-color: var(--brand-muted-foreground); }
+      .text-muted-foreground { color: var(--brand-muted-foreground); }
+      .border-muted-foreground { border-color: var(--brand-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--brand-muted-foreground); }
+      .bg-border { background-color: var(--brand-border); }
+      .text-border { color: var(--brand-border); }
+      .border-border { border-color: var(--brand-border); }
+      .ring-border { --tw-ring-color: var(--brand-border); }
+      .bg-input { background-color: var(--brand-input); }
+      .text-input { color: var(--brand-input); }
+      .border-input { border-color: var(--brand-input); }
+      .ring-input { --tw-ring-color: var(--brand-input); }
+      .bg-ring { background-color: var(--brand-ring); }
+      .text-ring { color: var(--brand-ring); }
+      .border-ring { border-color: var(--brand-ring); }
+      .ring-ring { --tw-ring-color: var(--brand-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+    <style id="page-styles">
+      /* ============ Base ============ */
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+      body {
+        margin: 0;
+        font-family: var(--brand-font-sans);
+        background: var(--brand-background);
+        color: var(--brand-foreground);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color var(--brand-t-base) var(--brand-ease), color var(--brand-t-base) var(--brand-ease);
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+      ul { list-style: none; margin: 0; padding: 0; }
+      :focus-visible { outline: 2px solid var(--brand-ring); outline-offset: 2px; }
+
+      /* ============ Icons ============ */
+      .icon { width: 1em; height: 1em; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+      /* ============ Skip link ============ */
+      .skip-link {
+        position: absolute;
+        top: -100px; left: 1rem;
+        z-index: 9999;
+        background: var(--brand-primary);
+        color: var(--brand-primary-foreground);
+        padding: 0.5rem 1rem;
+        border-radius: var(--brand-radius-sm);
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: top var(--brand-t-fast) var(--brand-ease);
+      }
+      .skip-link:focus { top: 1rem; }
+
+      /* ============ Scroll progress ============ */
+      .scroll-progress {
+        position: fixed;
+        top: 0; left: 0;
+        height: 3px; width: 0;
+        background: var(--brand-gradient-accent);
+        z-index: 9998;
+        transition: width 0.08s linear;
+      }
+
+      /* ============ Navbar ============ */
+      .navbar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 1000;
+        background: color-mix(in srgb, var(--brand-background) 85%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color var(--brand-t-base) var(--brand-ease), box-shadow var(--brand-t-base) var(--brand-ease);
+      }
+      .navbar.scrolled {
+        border-bottom-color: var(--brand-border);
+        box-shadow: var(--brand-shadow-sm);
+      }
+      .nav-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .nav-brand {
+        font-family: var(--brand-font-display);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.03em;
+      }
+      .nav-brand .dot { color: var(--brand-primary); }
+      .nav-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; }
+      .nav-links a {
+        color: var(--brand-muted-foreground);
+        transition: color var(--brand-t-fast) var(--brand-ease);
+        position: relative;
+        padding: 0.25rem 0;
+      }
+      .nav-links a:hover, .nav-links a:focus-visible { color: var(--brand-foreground); }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0;
+        width: 0; height: 2px;
+        background: var(--brand-primary);
+        transition: width var(--brand-t-base) var(--brand-ease);
+      }
+      .nav-links a:hover::after, .nav-links a:focus-visible::after { width: 100%; }
+      .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+      .theme-toggle {
+        position: relative;
+        width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: var(--brand-radius-sm);
+        color: var(--brand-muted-foreground);
+        font-size: 1.2rem;
+        transition: background var(--brand-t-fast) var(--brand-ease), color var(--brand-t-fast) var(--brand-ease);
+        overflow: hidden;
+      }
+      .theme-toggle:hover { background: var(--brand-accent-soft); color: var(--brand-primary); }
+      .theme-toggle .icon { position: absolute; transition: transform var(--brand-t-base) var(--brand-ease), opacity var(--brand-t-fast) ease; }
+      html.light .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+      html.light .theme-toggle .icon-sun { opacity: 0; transform: rotate(90deg) scale(0); }
+      html.dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0); }
+      html.dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+      .hamburger {
+        display: none;
+        width: 40px; height: 40px;
+        align-items: center; justify-content: center;
+        border-radius: var(--brand-radius-sm);
+        color: var(--brand-foreground);
+        font-size: 1.25rem;
+      }
+      .hamburger:hover { background: var(--brand-accent-soft); }
+
+      @media (max-width: 768px) {
+        .hamburger { display: flex; }
+        .nav-links {
+          position: fixed;
+          top: 64px; left: 0; right: 0;
+          flex-direction: column;
+          background: var(--brand-background);
+          border-bottom: 1px solid var(--brand-border);
+          padding: 1rem 1.5rem 1.5rem;
+          gap: 0.25rem;
+          transform: translateY(-110%);
+          opacity: 0;
+          pointer-events: none;
+          transition: transform var(--brand-t-base) var(--brand-ease), opacity var(--brand-t-base) var(--brand-ease);
+          box-shadow: var(--brand-shadow-md);
+        }
+        .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .nav-links a { padding: 0.6rem 0; }
+      }
+
+      /* ============ Section ============ */
+      .section {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 5rem 1.5rem;
+      }
+      .section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--brand-border);
+        flex-wrap: wrap;
+      }
+      .section-num {
+        font-family: var(--brand-font-mono);
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--brand-primary);
+        background: var(--brand-accent-soft);
+        padding: 0.25rem 0.55rem;
+        border-radius: var(--brand-radius-sm);
+        letter-spacing: 0.05em;
+      }
+      .section-title {
+        font-family: var(--brand-font-display);
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .section-label {
+        font-family: var(--brand-font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        color: var(--brand-fg-subtle);
+        margin-left: auto;
+        text-transform: uppercase;
+      }
+
+      /* ============ Hero ============ */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 7rem 1.5rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--brand-border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--brand-border) 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0.25;
+        -webkit-mask-image: radial-gradient(ellipse 60% 60% at 70% 40%, black 0%, transparent 100%);
+        mask-image: radial-gradient(ellipse 60% 60% at 70% 40%, black 0%, transparent 100%);
+        pointer-events: none;
+      }
+      .hero-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-tag {
+        font-family: var(--brand-font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: var(--brand-primary);
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .hero-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--brand-success);
+        background: rgba(34, 197, 94, 0.08);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        border-radius: 999px;
+        padding: 0.3rem 0.8rem;
+        margin-left: 0.6rem;
+        margin-bottom: 1rem;
+        vertical-align: middle;
+      }
+      .hero-status::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--brand-success);
+        animation: status-pulse 2s ease-in-out infinite;
+      }
+      @keyframes status-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+      html.dark .hero-status {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .hero-title {
+        font-family: var(--brand-font-display);
+        font-size: clamp(2.8rem, 8vw, 4.8rem);
+        font-weight: 800;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--brand-foreground);
+      }
+      .hero-subtitle {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 600;
+        color: var(--brand-muted-foreground);
+        margin: 0 0 1rem;
+      }
+      .hero-desc {
+        font-size: 0.95rem;
+        color: var(--brand-muted-foreground);
+        max-width: 520px;
+        margin: 0 0 2rem;
+        line-height: 1.7;
+      }
+      .hero-metrics {
+        display: flex;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .hero-metric { display: flex; flex-direction: column; }
+      .metric-num {
+        font-family: var(--brand-font-mono);
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-weight: 700;
+        color: var(--brand-primary);
+        line-height: 1;
+      }
+      .metric-label {
+        font-size: 0.8rem;
+        color: var(--brand-muted-foreground);
+        margin-top: 0.3rem;
+      }
+      .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+      .hero-avatar { position: relative; }
+      .avatar-trigger {
+        display: block;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 0;
+        border: 3px solid var(--brand-border);
+        transition: border-color var(--brand-t-base) var(--brand-ease), transform var(--brand-t-base) var(--brand-ease), box-shadow var(--brand-t-base) var(--brand-ease);
+        width: 260px; height: 260px;
+      }
+      .avatar-trigger:hover { border-color: var(--brand-primary); transform: scale(1.02); box-shadow: var(--brand-shadow-lg); }
+      .avatar-trigger img { width: 100%; height: 100%; object-fit: cover; }
+
+      @media (max-width: 900px) {
+        .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
+        .hero-avatar { order: -1; }
+        .avatar-trigger { width: 160px; height: 160px; }
+      }
+
+      /* ============ Buttons ============ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1.4rem;
+        border-radius: var(--brand-radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: background var(--brand-t-fast) var(--brand-ease), border-color var(--brand-t-fast) var(--brand-ease), color var(--brand-t-fast) var(--brand-ease), transform var(--brand-t-fast) var(--brand-ease), box-shadow var(--brand-t-fast) var(--brand-ease);
+        border: 1.5px solid transparent;
+        text-align: center;
+        justify-content: center;
+      }
+      .btn-primary { background: var(--brand-primary); color: var(--brand-primary-foreground); border-color: var(--brand-primary); }
+      .btn-primary:hover { background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); transform: translateY(-1px); box-shadow: var(--brand-shadow-md); }
+      .btn-outline { background: transparent; color: var(--brand-foreground); border-color: var(--brand-border); }
+      .btn-outline:hover { border-color: var(--brand-primary); color: var(--brand-primary); transform: translateY(-1px); }
+      .btn .icon { font-size: 1em; }
+
+      /* ============ About ============ */
+      .about-content { max-width: 800px; }
+      .about-lead {
+        font-size: 1.15rem;
+        line-height: 1.75;
+        color: var(--brand-foreground);
+        font-weight: 500;
+        margin: 0 0 1.5rem;
+      }
+      .about-body {
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--brand-muted-foreground);
+        margin: 0 0 2.5rem;
+      }
+      .about-cells {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .info-cell {
+        padding: 1.25rem;
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-md);
+        background: var(--brand-card);
+        transition: border-color var(--brand-t-fast) var(--brand-ease);
+      }
+      .info-cell:hover { border-color: var(--brand-primary); }
+      .cell-label {
+        display: block;
+        font-family: var(--brand-font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        color: var(--brand-fg-subtle);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      .cell-value { font-size: 0.92rem; font-weight: 600; }
+      @media (max-width: 700px) { .about-cells { grid-template-columns: 1fr; } }
+
+      /* ============ Skills ============ */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .skill-card {
+        background: var(--brand-card);
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-md);
+        padding: 1.75rem;
+        transition: border-color var(--brand-t-fast) var(--brand-ease), box-shadow var(--brand-t-fast) var(--brand-ease), transform var(--brand-t-fast) var(--brand-ease);
+      }
+      .skill-card:hover { border-color: var(--brand-primary); box-shadow: var(--brand-shadow-md); transform: translateY(-2px); }
+      .skill-icon {
+        width: 44px; height: 44px;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--brand-accent-soft);
+        color: var(--brand-primary);
+        border-radius: var(--brand-radius-sm);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+      .skill-title { font-size: 1.1rem; font-weight: 700; margin: 0 0 1rem; }
+      .skill-list { display: flex; flex-direction: column; gap: 0.55rem; }
+      .skill-list li {
+        display: flex; justify-content: space-between; align-items: center;
+        padding-bottom: 0.55rem;
+        border-bottom: 1px solid var(--brand-border);
+      }
+      .skill-list li:last-child { border-bottom: none; padding-bottom: 0; }
+      .skill-name { font-size: 0.88rem; font-weight: 500; }
+      .skill-level {
+        font-family: var(--brand-font-mono);
+        font-size: 0.68rem;
+        color: var(--brand-fg-subtle);
+        letter-spacing: 0.05em;
+      }
+      @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr; } }
+
+      /* ============ Projects ============ */
+      .projects-grid { display: flex; flex-direction: column; gap: 2rem; }
+      .project-card {
+        background: var(--brand-card);
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-lg);
+        overflow: hidden;
+        transition: border-color var(--brand-t-fast) var(--brand-ease), box-shadow var(--brand-t-fast) var(--brand-ease);
+      }
+      .project-card:hover { border-color: var(--brand-primary); box-shadow: var(--brand-shadow-lg); }
+      .project-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 21/9;
+        background: var(--brand-muted);
+      }
+      .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--brand-ease); }
+      .project-card:hover .project-image img { transform: scale(1.03); }
+      .metric-badge {
+        position: absolute;
+        top: 1rem; left: 1rem;
+        background: var(--brand-primary);
+        color: var(--brand-primary-foreground);
+        font-family: var(--brand-font-mono);
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 0.4rem 0.75rem;
+        border-radius: var(--brand-radius-sm);
+        letter-spacing: 0.02em;
+        z-index: 2;
+      }
+      .lightbox-trigger {
+        position: absolute;
+        inset: 0;
+        cursor: zoom-in;
+        background: transparent;
+        border: none;
+        z-index: 1;
+      }
+      .project-body { padding: 1.75rem; }
+      .project-tag {
+        font-family: var(--brand-font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        color: var(--brand-primary);
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .project-title { font-size: 1.35rem; font-weight: 700; margin: 0.5rem 0 0.75rem; letter-spacing: -0.01em; }
+      .project-desc { font-size: 0.92rem; color: var(--brand-muted-foreground); line-height: 1.7; margin: 0 0 1.5rem; }
+      .project-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
+        background: var(--brand-muted);
+        border-radius: var(--brand-radius-md);
+      }
+      .pmetric { display: flex; flex-direction: column; }
+      .pmetric-num {
+        font-family: var(--brand-font-mono);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--brand-primary);
+        line-height: 1;
+      }
+      .pmetric-label { font-size: 0.72rem; color: var(--brand-muted-foreground); margin-top: 0.3rem; }
+      .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+      .project-tech span {
+        font-family: var(--brand-font-mono);
+        font-size: 0.72rem;
+        padding: 0.3rem 0.6rem;
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-sm);
+        color: var(--brand-muted-foreground);
+      }
+      .project-subimages { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .project-subimages button {
+        position: relative;
+        border-radius: var(--brand-radius-md);
+        overflow: hidden;
+        padding: 0;
+        border: 1px solid var(--brand-border);
+        background: var(--brand-muted);
+        cursor: zoom-in;
+        display: block;
+      }
+      .project-subimages img { width: 100%; aspect-ratio: 16/10; object-fit: cover; transition: transform 0.3s var(--brand-ease); }
+      .project-subimages button:hover img { transform: scale(1.04); }
+      .subimg-label {
+        position: absolute;
+        bottom: 0.5rem; left: 0.5rem;
+        font-family: var(--brand-font-mono);
+        font-size: 0.62rem;
+        color: #fff;
+        background: rgba(0,0,0,0.55);
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+        pointer-events: none;
+      }
+      @media (max-width: 600px) { .project-metrics { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+      /* ============ DocMind Showcase ============ */
+      .docmind-showcase {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      a.docmind-hero-wrap {
+        display: block;
+        border-radius: var(--brand-radius-md);
+        overflow: hidden;
+        border: 1px solid var(--brand-border);
+        box-shadow: var(--brand-shadow-lg);
+        cursor: pointer;
+        transition: border-color var(--brand-t-fast) ease, box-shadow var(--brand-t-fast) ease, transform var(--brand-t-fast) ease;
+        text-decoration: none;
+      }
+      a.docmind-hero-wrap:hover {
+        border-color: var(--brand-primary);
+        box-shadow: var(--brand-shadow-xl);
+        transform: translateY(-2px);
+      }
+      a.docmind-hero-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .docmind-content {
+        max-width: 1100px;
+      }
+      .docmind-tagline {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--brand-primary);
+        margin: 0 0 1rem;
+        font-family: var(--brand-font-mono);
+        letter-spacing: 0.01em;
+      }
+      .docmind-desc {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--brand-foreground);
+        opacity: 0.85;
+        margin: 0 0 2rem;
+      }
+      .docmind-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .dm-feature {
+        background: var(--brand-card);
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-sm);
+        padding: 1rem 1.2rem;
+        transition: border-color var(--brand-t-fast) ease;
+      }
+      .dm-feature:hover { border-color: var(--brand-primary); }
+      .dm-feature-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin: 0 0 0.4rem;
+      }
+      .dm-feature-desc {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: var(--brand-foreground);
+        opacity: 0.7;
+        margin: 0;
+      }
+      .docmind-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .docmind-tech span {
+        font-family: var(--brand-font-mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.3rem 0.7rem;
+        border-radius: var(--brand-radius-xs);
+        background: var(--brand-accent-soft);
+        color: var(--brand-primary);
+      }
+      .docmind-cta {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .docmind-license {
+        font-size: 0.8rem;
+        color: var(--brand-foreground);
+        opacity: 0.5;
+        margin: 0;
+      }
+
+      /* ============ Timeline ============ */
+      .timeline { position: relative; padding-left: 2rem; max-width: 800px; }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0.3rem; bottom: 0;
+        width: 1px;
+        background: var(--brand-border);
+      }
+      .timeline-item { position: relative; padding-bottom: 2.5rem; }
+      .timeline-item:last-child { padding-bottom: 0; }
+      .timeline-dot {
+        position: absolute;
+        left: -2rem;
+        top: 0.35rem;
+        width: 11px; height: 11px;
+        border-radius: 50%;
+        background: var(--brand-background);
+        border: 2px solid var(--brand-primary);
+        margin-left: -5.5px;
+      }
+      .timeline-date {
+        font-family: var(--brand-font-mono);
+        font-size: 0.78rem;
+        color: var(--brand-primary);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+        letter-spacing: 0.02em;
+      }
+      .timeline-title { font-size: 1.05rem; font-weight: 600; margin: 0 0 0.25rem; }
+      .timeline-desc { font-size: 0.88rem; color: var(--brand-muted-foreground); margin: 0; }
+
+      /* ============ Contact ============ */
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+      .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+      .contact-item {
+        display: flex; align-items: center; gap: 1rem;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-md);
+        background: var(--brand-card);
+        transition: border-color var(--brand-t-fast) var(--brand-ease), transform var(--brand-t-fast) var(--brand-ease);
+      }
+      .contact-item:hover { border-color: var(--brand-primary); transform: translateY(-1px); }
+      .contact-icon {
+        width: 38px; height: 38px;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--brand-accent-soft);
+        color: var(--brand-primary);
+        border-radius: var(--brand-radius-sm);
+        font-size: 1.05rem;
+        flex-shrink: 0;
+      }
+      .contact-label {
+        display: block;
+        font-family: var(--brand-font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+        color: var(--brand-fg-subtle);
+        text-transform: uppercase;
+        margin-bottom: 0.15rem;
+      }
+      .contact-value { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
+      .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+      .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+      .form-group label { font-size: 0.82rem; font-weight: 600; }
+      .form-group input, .form-group textarea {
+        font-family: inherit;
+        font-size: 0.92rem;
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--brand-input);
+        border-radius: var(--brand-radius-sm);
+        background: var(--brand-card);
+        color: var(--brand-foreground);
+        transition: border-color var(--brand-t-fast) var(--brand-ease), box-shadow var(--brand-t-fast) var(--brand-ease);
+      }
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        box-shadow: 0 0 0 3px var(--brand-accent-soft);
+      }
+      .form-group textarea { resize: vertical; min-height: 120px; }
+      .form-submit {
+        position: relative;
+        margin-top: 0.4rem;
+      }
+      .submit-loading { display: none; align-items: center; gap: 0.5rem; }
+      .form-submit.loading .submit-text { display: none; }
+      .form-submit.loading .submit-loading { display: inline-flex; }
+      .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+      @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+
+      /* ============ Footer ============ */
+      .footer { border-top: 1px solid var(--brand-border); padding: 2rem 1.5rem; }
+      .footer-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .footer-copy { font-size: 0.83rem; color: var(--brand-muted-foreground); }
+      .footer-links { display: flex; gap: 1.25rem; }
+      .footer-links a {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.83rem;
+        color: var(--brand-muted-foreground);
+        transition: color var(--brand-t-fast) var(--brand-ease);
+      }
+      .footer-links a:hover { color: var(--brand-primary); }
+
+      /* ============ Lightbox ============ */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        cursor: zoom-out;
+        animation: lb-fade 0.2s ease;
+      }
+      .lightbox[hidden] { display: none; }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: var(--brand-radius-md);
+        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.6);
+        object-fit: contain;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 1.5rem; right: 1.5rem;
+        width: 44px; height: 44px;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        font-size: 1.4rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        transition: background var(--brand-t-fast) var(--brand-ease);
+        cursor: pointer;
+      }
+      .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
+      @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+
+      /* ============ Toast ============ */
+      .toast {
+        position: fixed;
+        bottom: 2rem; left: 50%;
+        transform: translateX(-50%) translateY(120px);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.9rem 1.4rem;
+        background: var(--brand-card);
+        border: 1px solid var(--brand-border);
+        border-radius: var(--brand-radius-md);
+        box-shadow: var(--brand-shadow-lg);
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: transform var(--brand-t-base) var(--brand-ease), opacity var(--brand-t-base) var(--brand-ease);
+        opacity: 0;
+        pointer-events: none;
+        max-width: calc(100vw - 2rem);
+      }
+      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.success { border-left: 3px solid var(--brand-success); }
+      .toast.success .toast-icon { color: var(--brand-success); }
+      .toast.error { border-left: 3px solid var(--brand-danger); }
+      .toast.error .toast-icon { color: var(--brand-danger); }
+      .toast[hidden] { display: none; }
+      .toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+      /* ============ Scroll reveal ============ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s var(--brand-ease), transform 0.6s var(--brand-ease);
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+
+      /* ============ Spinner ============ */
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .icon.spin { animation: spin 0.8s linear infinite; transform-origin: center; }
+
+      /* ============ Reduced motion ============ */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .reveal { opacity: 1 !important; transform: none !important; }
+      }
+
+      /* ============ Responsive tweaks ============ */
+      @media (max-width: 600px) {
+        .section { padding: 3.5rem 1.25rem; }
+        .section-label { width: 100%; margin-left: 0; }
+        .hero { padding: 5.5rem 1.25rem 3rem; }
+        .hero-metrics { gap: 1.5rem; }
+        .project-body { padding: 1.25rem; }
+        .project-subimages { grid-template-columns: 1fr; }
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <!-- Theme init (prevents FOUC) -->
+    <script>
+      (function() {
+        var saved = localStorage.getItem('theme') || 'light';
+        var html = document.documentElement;
+        if (saved === 'dark') {
+          html.setAttribute('data-theme', 'dark');
+          html.classList.remove('light');
+          html.classList.add('dark');
+        } else {
+          html.classList.add('light');
+        }
+      })();
+    </script>
+
+    <!-- SVG icon sprite -->
+    <svg aria-hidden="true" style="display:none">
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M17.66 6.34l1.41-1.41"/></g></symbol>
+      <symbol id="i-bars" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></g></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></g></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></g></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></g></symbol>
+      <symbol id="i-envelope" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></g></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-map-marker" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.345.72-4.185-1.605-4.185-1.605-.57-1.455-1.395-1.845-1.395-1.845-1.14-.78.09-.765.09-.765 1.26.09 1.905 1.29 1.905 1.29 1.125 1.935 2.955 1.395 3.675 1.065.12-.825.465-1.395.84-1.715-2.88-.33-5.91-1.44-5.91-6.42 0-1.425.51-2.595 1.335-3.51-.135-.33-.585-1.65.12-3.435 0 0 1.095-.36 3.6 1.335 1.05-.285 2.16-.435 3.27-.435 1.11 0 2.22.15 3.27.435 2.505-1.695 3.6-1.335 3.6-1.335.705 1.785.255 3.105.12 3.435.825.915 1.335 2.085 1.335 3.51 0 4.995-3.03 6.075-5.91 6.375.465.405.885 1.2.885 2.43 0 1.755-.015 3.165-.015 3.6 0 .315.225.69.87.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z" fill="currentColor"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 9V3"/><path d="M7.5 14h9"/></g></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 0 12 0V4H6v5z"/><path d="M6 5H3v2a3 3 0 0 0 3 3"/><path d="M18 5h3v2a3 3 0 0 1-3 3"/><path d="M9 21h6"/><path d="M12 17v4"/></g></symbol>
+      <symbol id="i-lightbulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/></g></symbol>
+      <symbol id="i-check-circle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></g></symbol>
+      <symbol id="i-exclamation-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 16h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-paper-plane" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></g></symbol>
+    </svg>
+
+    <!-- Skip link -->
+    <a href="#hero" class="skip-link">跳到主要内容</a>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="页面阅读进度" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="nav-brand">Y<span class="dot">.</span>H</a>
+        <nav class="nav-links" id="navLinks" aria-label="主导航">
+          <a href="#hero">首页</a>
+          <a href="#about">关于</a>
+          <a href="#skills">技能</a>
+          <a href="#projects">项目</a>
+          <a href="#docmind">DocMind</a>
+          <a href="#timeline">经历</a>
+          <a href="#contact">联系</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="切换深色/浅色主题" title="切换主题">
+            <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+            <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          </button>
+          <button class="hamburger" id="hamburger" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+            <svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ===== Hero ===== -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <span class="hero-tag" lang="en">PORTFOLIO / 2026</span>
+            <span class="hero-status" role="status">寻求合作 · 广东江门</span>
+            <h1 class="hero-title">尹一慧</h1>
+            <p class="hero-subtitle">用精密设计驱动工程创新</p>
+            <p class="hero-desc">材料成型及控制工程 · 湖南工程学院 2026届。专注于机械结构设计与动平衡技术，同时开发 DocMind 本地知识库工具。寻求技术合作与产品共创。</p>
+            <div class="hero-metrics">
+              <div class="hero-metric">
+                <span class="metric-num">3</span>
+                <span class="metric-label">项目经验</span>
+              </div>
+              <div class="hero-metric">
+                <span class="metric-num">2</span>
+                <span class="metric-label">竞赛获奖</span>
+              </div>
+              <div class="hero-metric">
+                <span class="metric-num">1</span>
+                <span class="metric-label">企业实习</span>
+              </div>
+              <div class="hero-metric">
+                <span class="metric-num">15.7%</span>
+                <span class="metric-label">GR&amp;R</span>
+              </div>
+            </div>
+            <div class="hero-cta">
+              <a href="#about" class="btn btn-primary">了解我 <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+              <a href="#projects" class="btn btn-outline">查看项目</a>
+              <a href="#contact" class="btn btn-outline">联系我</a>
+              <a href="assets/resume.pdf" class="btn btn-outline" download="尹一慧-简历.pdf">下载简历 <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+            </div>
+          </div>
+          <div class="hero-avatar">
+            <button class="avatar-trigger" data-lightbox="assets/profile.webp" aria-label="查看大图">
+              <img src="assets/profile.webp" alt="尹一慧肖像照" width="260" height="260">
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== About (01) ===== -->
+      <section class="section reveal" id="about">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <h2 class="section-title">关于</h2>
+          <span class="section-label">ABOUT</span>
+        </div>
+        <div class="about-content">
+          <p class="about-lead">我是湖南工程学院材料成型及控制工程专业的应届毕业生，专注于机械结构设计与工艺优化。大学期间以独立研发身份完成了高精度动平衡机项目，从机械结构设计、仿真分析到测控系统开发全流程覆盖。</p>
+          <p class="about-body">在湖南江滨活塞有限公司实习期间，协助解决了批量铸造缺陷问题，推动工序良品率提升3%。擅长 SolidWorks、ANSYS、C# 开发，致力于用技术解决工程实际问题。</p>
+          <div class="about-cells">
+            <div class="info-cell">
+              <span class="cell-label">学校</span>
+              <span class="cell-value">湖南工程学院 · 2026届</span>
+            </div>
+            <div class="info-cell">
+              <span class="cell-label">奖项</span>
+              <span class="cell-value">省赛二等奖 · 校二等奖学金</span>
+            </div>
+            <div class="info-cell">
+              <span class="cell-label">方向</span>
+              <span class="cell-value">动平衡机 · 叶片检测系统</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Skills (02) ===== -->
+      <section class="section reveal" id="skills">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2 class="section-title">技能</h2>
+          <span class="section-label">EXPERTISE</span>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></div>
+            <h3 class="skill-title">机械设计</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">SolidWorks</span><span class="skill-level">精通</span></li>
+              <li><span class="skill-name">UG/NX</span><span class="skill-level">熟练</span></li>
+              <li><span class="skill-name">ANSYS Workbench</span><span class="skill-level">熟练</span></li>
+              <li><span class="skill-name">AutoCAD</span><span class="skill-level">精通</span></li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></div>
+            <h3 class="skill-title">工艺工程</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">铸造工艺</span><span class="skill-level">熟练</span></li>
+              <li><span class="skill-name">材料成型</span><span class="skill-level">熟练</span></li>
+              <li><span class="skill-name">激光切割</span><span class="skill-level">掌握</span></li>
+              <li><span class="skill-name">数码加工</span><span class="skill-level">掌握</span></li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></div>
+            <h3 class="skill-title">开发与工具</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">C# WinForm</span><span class="skill-level">熟练</span></li>
+              <li><span class="skill-name">3D打印</span><span class="skill-level">掌握</span></li>
+              <li><span class="skill-name">电路设计</span><span class="skill-level">掌握</span></li>
+              <li><span class="skill-name">CET-4</span><span class="skill-level">通过</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Projects (03) ===== -->
+      <section class="section reveal" id="projects">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2 class="section-title">项目</h2>
+          <span class="section-label">PROJECTS</span>
+        </div>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/balancing-machine.webp" alt="叶片平衡机系统设计" loading="lazy">
+              <span class="metric-badge">GR&amp;R 15.7%</span>
+              <button class="lightbox-trigger" data-lightbox="assets/balancing-machine.webp" aria-label="放大查看叶片平衡机"></button>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">毕业设计 · 创业项目</span>
+              <h3 class="project-title">叶片平衡机系统设计</h3>
+              <p class="project-desc">针对10~50g小型注塑扇叶，独立设计立式双平面动平衡机。测控系统基于C# WinForm，采用时域同步平均+傅里叶积分法提取基频。</p>
+              <div class="project-metrics">
+                <div class="pmetric"><span class="pmetric-num">15.7%</span><span class="pmetric-label">GR&amp;R</span></div>
+                <div class="pmetric"><span class="pmetric-num">10~50g</span><span class="pmetric-label">扇叶范围</span></div>
+                <div class="pmetric"><span class="pmetric-num">双平面</span><span class="pmetric-label">动平衡机</span></div>
+              </div>
+              <div class="project-tech">
+                <span>C# WinForm</span>
+                <span>ANSYS</span>
+                <span>ISO 1940</span>
+              </div>
+              <div class="project-subimages">
+                <button data-lightbox="assets/40Cr.webp" aria-label="放大查看40Cr模态分析">
+                  <img src="assets/40Cr.webp" alt="40Cr模态分析" loading="lazy">
+                  <span class="subimg-label">40Cr 模态分析</span>
+                </button>
+                <button data-lightbox="assets/35CrMo.webp" aria-label="放大查看35CrMo模态分析">
+                  <img src="assets/35CrMo.webp" alt="35CrMo模态分析" loading="lazy">
+                  <span class="subimg-label">35CrMo 模态分析</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/rope-climber.webp" alt="机械设计创新大赛爬绳装置" loading="lazy">
+              <span class="metric-badge">+68% 负载</span>
+              <button class="lightbox-trigger" data-lightbox="assets/rope-climber.webp" aria-label="放大查看爬绳装置"></button>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">竞赛项目</span>
+              <h3 class="project-title">机械设计创新大赛</h3>
+              <p class="project-desc">爬绳装置结构设计负责人。使用UG 3D建模与运动仿真，通过ANSYS静力学分析优化筋板布局，负载能力大幅提升。</p>
+              <div class="project-metrics">
+                <div class="pmetric"><span class="pmetric-num">42kg</span><span class="pmetric-label">最大负载</span></div>
+                <div class="pmetric"><span class="pmetric-num">+68%</span><span class="pmetric-label">负载提升</span></div>
+                <div class="pmetric"><span class="pmetric-num">省二</span><span class="pmetric-label">竞赛获奖</span></div>
+              </div>
+              <div class="project-tech">
+                <span>UG</span>
+                <span>ANSYS</span>
+                <span>省赛二等奖</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/nightlight.webp" alt="自平衡夜灯" loading="lazy">
+              <span class="metric-badge">全流程</span>
+              <button class="lightbox-trigger" data-lightbox="assets/nightlight.webp" aria-label="放大查看自平衡夜灯"></button>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">个人项目</span>
+              <h3 class="project-title">自平衡夜灯</h3>
+              <p class="project-desc">从充电电路选型到外壳3D打印组装调试，全流程独立完成。展现了从设计到实物的完整工程实现能力。</p>
+              <div class="project-metrics">
+                <div class="pmetric"><span class="pmetric-num">自研</span><span class="pmetric-label">电路设计</span></div>
+                <div class="pmetric"><span class="pmetric-num">3D打印</span><span class="pmetric-label">外壳制作</span></div>
+                <div class="pmetric"><span class="pmetric-num">独立</span><span class="pmetric-label">全流程</span></div>
+              </div>
+              <div class="project-tech">
+                <span>电路设计</span>
+                <span>3D打印</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== DocMind Showcase (04) ===== -->
+      <section class="section reveal" id="docmind">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2 class="section-title">DocMind</h2>
+          <span class="section-label">PRODUCT</span>
+        </div>
+        <div class="docmind-showcase">
+          <a class="docmind-hero-wrap" href="https://github.com/yyh2003-10/DocMind" target="_blank" rel="noopener noreferrer" aria-label="访问 DocMind GitHub 仓库">
+            <img src="assets/docmind-hero.webp" alt="DocMind 知识图谱界面 — 实体关系可视化与 AI 工作台" loading="lazy" width="1280" height="720">
+          </a>
+          <div class="docmind-content">
+            <p class="docmind-tagline">你的私人知识库管家 — 把文档丢进去，用大白话提问，秒出答案</p>
+            <p class="docmind-desc">DocMind 是一款本地运行的智能文档知识库工具。把你的 PDF、Word、Excel、PPT、图片甚至代码文件导入后，它会自动理解内容、建立索引。之后你可以像和真人聊天一样提问，比如"这份合同的关键条款是什么"、"上季度销售数据有什么趋势"，DocMind 会从你的文档里找到最相关的内容，直接给你答案和来源出处。</p>
+            <p class="docmind-desc">所有数据都在你自己的电脑上处理，不需要上传到云端，隐私零风险。整个工具仅 40MB 大小，双击即用，无需配置复杂环境。</p>
+            <div class="docmind-features">
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">搜得准</h3>
+                <p class="dm-feature-desc">关键词匹配 + 语义理解双引擎同时工作，不管你问"财务报表"还是"公司赚了多少钱"，都能找到答案</p>
+              </div>
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">问得快</h3>
+                <p class="dm-feature-desc">接入 DeepSeek、通义千问、Kimi、Claude、Gemini 等主流大模型，或用本地 Ollama 完全离线，回答带来源引用，可溯源验证</p>
+              </div>
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">啥都能读</h3>
+                <p class="dm-feature-desc">PDF、Word、Excel、PPT、Markdown、HTML、图片、代码 — 8 种格式全支持，拖进去就自动处理</p>
+              </div>
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">数据不外传</h3>
+                <p class="dm-feature-desc">全部计算在本地完成，你的文档永远不离开你的电脑，适合企业内部资料、法律合同、科研论文等敏感场景</p>
+              </div>
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">AI 工具集成</h3>
+                <p class="dm-feature-desc">内置 15 个 MCP 工具接口，可接入 Claude Desktop、Cursor 等 AI 工具，让 AI 直接读写你的知识库</p>
+              </div>
+              <div class="dm-feature">
+                <h3 class="dm-feature-title">一键部署</h3>
+                <p class="dm-feature-desc">双击 start.bat 自动安装依赖、启动服务、初始化数据库 — 不会编程也能用，还自带系统体检和一键修复</p>
+              </div>
+            </div>
+            <div class="docmind-tech">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>sqlite-vec</span>
+              <span>fastembed ONNX</span>
+              <span>WPF / C#</span>
+              <span>MCP Protocol</span>
+            </div>
+            <div class="docmind-cta">
+              <a href="https://github.com/yyh2003-10/DocMind" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub 仓库 <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+              <a href="#contact" class="btn btn-outline">寻求合作 <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </div>
+            <p class="docmind-license">AGPL-3.0 开源 + 商业授权 · 支持本地部署与企业级定制</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Timeline (05) ===== -->
+      <section class="section reveal" id="timeline">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2 class="section-title">经历</h2>
+          <span class="section-label">TIMELINE</span>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">2023.09</span>
+            <div>
+              <h3 class="timeline-title">校二等奖学金</h3>
+              <p class="timeline-desc">综合素质优秀</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">2024.07 — 2024.11</span>
+            <div>
+              <h3 class="timeline-title">机械设计创新大赛 · 省赛二等奖</h3>
+              <p class="timeline-desc">爬绳装置结构设计，负载能力25kg→42kg</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">2025.07 — 2025.11</span>
+            <div>
+              <h3 class="timeline-title">实习生 · 湖南江滨活塞</h3>
+              <p class="timeline-desc">优化铸造工艺，良品率提升3%</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">2025.11 — 2026.06</span>
+            <div>
+              <h3 class="timeline-title">毕业设计：叶片平衡机系统</h3>
+              <p class="timeline-desc">全自动动平衡机设计与开发，含ANSYS仿真分析</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-date">2026.07</span>
+            <div>
+              <h3 class="timeline-title">本科毕业 · 工学学士</h3>
+              <p class="timeline-desc">湖南工程学院 材料成型及控制工程专业</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Contact (06) ===== -->
+      <section class="section reveal" id="contact">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2 class="section-title">联系</h2>
+          <span class="section-label">CONTACT</span>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <a href="tel:15372843059" class="contact-item">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+              <span>
+                <span class="contact-label">电话</span>
+                <span class="contact-value">15372843059</span>
+              </span>
+            </a>
+            <a href="mailto:y3167952062@outlook.com" class="contact-item">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg></span>
+              <span>
+                <span class="contact-label">邮箱</span>
+                <span class="contact-value">y3167952062@outlook.com</span>
+              </span>
+            </a>
+            <div class="contact-item">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-map-marker"/></svg></span>
+              <span>
+                <span class="contact-label">地址</span>
+                <span class="contact-value">广东江门市</span>
+              </span>
+            </div>
+            <a href="https://github.com/yyh2003-10" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></span>
+              <span>
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">yyh2003-10</span>
+              </span>
+            </a>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="个人站联系表单 - 新消息">
+            <div class="form-group">
+              <label for="cf-name">姓名</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+              <label for="cf-email">邮箱</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email" inputmode="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="cf-subject">主题</label>
+              <input type="text" id="cf-subject" name="subject" required placeholder="邮件主题">
+            </div>
+            <div class="form-group">
+              <label for="cf-message">消息</label>
+              <textarea id="cf-message" name="message" required placeholder="请输入您的消息..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+              <span class="submit-text">发送消息 <svg class="icon" aria-hidden="true"><use href="#i-paper-plane"/></svg></span>
+              <span class="submit-loading"><svg class="icon spin" aria-hidden="true"><use href="#i-spinner"/></svg> 发送中...</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2026 尹一慧. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="https://github.com/yyh2003-10" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+          <a href="mailto:y3167952062@outlook.com"><svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> Email</a>
+          <a href="tel:15372843059"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Phone</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== Lightbox ===== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览" hidden>
+      <button class="lightbox-close" id="lightboxClose" aria-label="关闭预览">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+      </button>
+      <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <!-- ===== Toast ===== -->
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+      <span class="toast-icon" id="toastIcon"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg></span>
+      <span class="toast-text" id="toastText"></span>
+    </div>
+
+    <!-- ===== Scripts ===== -->
+    <script>lucide.createIcons();</script>
+    <script>
+      // ===== Theme toggle =====
+      (function() {
+        var toggle = document.getElementById('themeToggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var html = document.documentElement;
+          var isDark = html.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            html.removeAttribute('data-theme');
+            html.classList.remove('dark');
+            html.classList.add('light');
+            localStorage.setItem('theme', 'light');
+          } else {
+            html.setAttribute('data-theme', 'dark');
+            html.classList.remove('light');
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+      })();
+
+      // ===== Scroll progress bar =====
+      (function() {
+        var bar = document.getElementById('scrollProgress');
+        if (!bar) return;
+        function update() {
+          var st = document.documentElement.scrollTop || document.body.scrollTop;
+          var sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          bar.style.width = (sh > 0 ? (st / sh) * 100 : 0) + '%';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      })();
+
+      // ===== Navbar scroll effect =====
+      (function() {
+        var navbar = document.getElementById('navbar');
+        if (!navbar) return;
+        function update() {
+          navbar.classList.toggle('scrolled', window.scrollY > 10);
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      })();
+
+      // ===== Hamburger menu =====
+      (function() {
+        var btn = document.getElementById('hamburger');
+        var menu = document.getElementById('navLinks');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+          var isOpen = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+
+      // ===== Scroll reveal (IntersectionObserver) =====
+      (function() {
+        var reveals = document.querySelectorAll('.reveal');
+        if (!reveals.length) return;
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!('IntersectionObserver' in window) || prefersReduced) {
+          reveals.forEach(function(el) { el.classList.add('visible'); });
+          return;
+        }
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function(el) { io.observe(el); });
+      })();
+
+      // ===== Lightbox =====
+      (function() {
+        var lb = document.getElementById('lightbox');
+        var lbImg = document.getElementById('lightboxImg');
+        var lbClose = document.getElementById('lightboxClose');
+        if (!lb) return;
+        var triggers = document.querySelectorAll('[data-lightbox]');
+        var lastFocused = null;
+
+        function open(src, alt, trigger) {
+          lastFocused = trigger || document.activeElement;
+          lbImg.src = src;
+          lbImg.alt = alt || '';
+          lb.hidden = false;
+          document.body.style.overflow = 'hidden';
+          setTimeout(function() { if (lbClose) lbClose.focus(); }, 50);
+        }
+        function close() {
+          lb.hidden = true;
+          lbImg.src = '';
+          document.body.style.overflow = '';
+          if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+        }
+
+        triggers.forEach(function(el) {
+          el.addEventListener('click', function(e) {
+            e.preventDefault();
+            var src = el.getAttribute('data-lightbox');
+            var img = el.querySelector('img');
+            open(src, img ? img.alt : '', el);
+          });
+        });
+
+        lb.addEventListener('click', function(e) {
+          if (e.target === lb || (e.target.closest && e.target.closest('.lightbox-close'))) {
+            close();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !lb.hidden) close();
+        });
+      })();
+
+      // ===== Contact form AJAX =====
+      (function() {
+        var form = document.getElementById('contactForm');
+        var btn = document.getElementById('submitBtn');
+        var toast = document.getElementById('toast');
+        var toastText = document.getElementById('toastText');
+        var toastIcon = document.getElementById('toastIcon');
+        if (!form) return;
+
+        var toastTimer = null;
+        function showToast(type, message) {
+          if (!toast) return;
+          toast.hidden = false;
+          toast.className = 'toast ' + type;
+          toastText.textContent = message;
+          toastIcon.innerHTML = type === 'success'
+            ? '<svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>'
+            : '<svg class="icon" aria-hidden="true"><use href="#i-exclamation-circle"/></svg>';
+          void toast.offsetWidth;
+          toast.classList.add('show');
+          if (toastTimer) clearTimeout(toastTimer);
+          toastTimer = setTimeout(function() {
+            toast.classList.remove('show');
+            setTimeout(function() { toast.hidden = true; }, 350);
+          }, 4000);
+        }
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var name = form.name.value.trim();
+          var email = form.email.value.trim();
+          var subject = form.subject.value.trim();
+          var message = form.message.value.trim();
+          if (!name || !email || !subject || !message) {
+            showToast('error', '请填写所有必填字段');
+            return;
+          }
+
+          btn.classList.add('loading');
+          btn.disabled = true;
+
+          var formData = new FormData(form);
+
+          fetch('https://formsubmit.co/ajax/0f14c1d90a0319cb93a08a57920f1686', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.success === 'true' || data.success === true) {
+              showToast('success', '消息已发送，感谢您的联系！');
+              form.reset();
+            } else {
+              showToast('error', data.message || '发送失败，请稍后重试或直接发送邮件。');
+            }
+          })
+          .catch(function() {
+            showToast('error', '网络错误，请稍后重试或直接发送邮件。');
+          })
+          .finally(function() {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+          });
+        });
+      })();
+    </script>
+</body>
+</html>
